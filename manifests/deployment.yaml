@@ -5,6 +5,8 @@ metadata:
   labels:
     app: d12-sample-spring-boot-app-k8s
     backstage.io/kubernetes-id: d12-sample-spring-boot-app-k8s
+  annotations:
+    argocd-image-updater.argoproj.io/my-app-container.update-strategy: latest
 spec:
   replicas: 1
   selector:
@@ -26,7 +28,7 @@ spec:
     spec:
       containers:
         - name: d12-sample-spring-boot-app-k8s
-          image: ghcr.io/d1-cnoe/d12-sample-spring-boot-app-k8s@sha256:0f64437d2e07c619d9ccda738881a840ec7bf9ebb3b39c32df1feb55a6f08180
+          image: ghcr.io/d1-cnoe/d12-sample-spring-boot-app-k8s:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
